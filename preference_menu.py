@@ -15,16 +15,15 @@ class PreferenceMainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
 
+        #Butonların Tanımlandığı yer
         self.applications_pushButton.clicked.connect(self.applications_clicked)
-
         self.interviews_pushButton.clicked.connect(self.interviews_clicked)
-        
         self.mentor_meeting_pushButton.clicked.connect(self.mentor_meeting_clicked)
         self.bact_menu_pushButton.clicked.connect(self.bact_menu_clicked)
         self.exit_pushButton.clicked.connect(self.exit_clicked)
 
 
-
+    #Buton Fonksiyonlarının oluşturulduğu yer
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Preference Menu"))
