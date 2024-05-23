@@ -17,12 +17,13 @@ import os.path
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 # Google Calendar ve Gmail API yetkilendirme kapsamları
-SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/calendar']
+SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/calendar','https://www.googleapis.com/auth/calendar.readonly']
+  
 
-
+        
 class Ui_admin_menu_MainWindow(object):
     def setupUi(self, admin_menu_MainWindow):
-        self.main_window = admin_menu_MainWindow
+        self.main_window= admin_menu_MainWindow
         admin_menu_MainWindow.setObjectName("admin_menu_MainWindow")
         admin_menu_MainWindow.resize(618, 550)
         admin_menu_MainWindow.setMinimumSize(QtCore.QSize(618, 550))
@@ -33,90 +34,21 @@ class Ui_admin_menu_MainWindow(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.frame = QtWidgets.QFrame(parent=self.centralwidget)
         self.frame.setEnabled(True)
-        self.frame.setMinimumSize(QtCore.QSize(600, 500))
-        self.frame.setMaximumSize(QtCore.QSize(600, 500))
+        self.frame.setMinimumSize(QtCore.QSize(618, 550))
+        self.frame.setMaximumSize(QtCore.QSize(618, 550))
+        self.frame.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0.489, y1:1, x2:0.494, y2:0, stop:0 rgba(71, 71, 71, 255), stop:1 rgba(255, 255, 255, 255));")
         self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame.setObjectName("frame")
         self.werhere_image_label = QtWidgets.QLabel(parent=self.frame)
-        self.werhere_image_label.setGeometry(QtCore.QRect(20, 0, 551, 141))
+        self.werhere_image_label.setGeometry(QtCore.QRect(10, 20, 581, 111))
+        self.werhere_image_label.setStyleSheet("background-color: rgba(255, 255, 255, 0);")
         self.werhere_image_label.setText("")
-        self.werhere_image_label.setPixmap(QtGui.QPixmap("werhere_image.png"))
+        self.werhere_image_label.setPixmap(QtGui.QPixmap("images/werhere_image.png"))
+        self.werhere_image_label.setScaledContents(True)
         self.werhere_image_label.setObjectName("werhere_image_label")
-        self.act_check_pushButton = QtWidgets.QPushButton(parent=self.frame)
-        self.act_check_pushButton.setGeometry(QtCore.QRect(10, 220, 151, 31))
-        font = QtGui.QFont()
-        font.setBold(True)
-        self.act_check_pushButton.setFont(font)
-        self.act_check_pushButton.setStyleSheet("\n"
-"QPushButton:hover {\n"
-"\n"
-"                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));\n"
-"                  color: rgb(255, 255, 255);\n"
-"                  }\n"
-"\n"
-"QPushButton:pressed {\n"
-"                    background-color: rgb(255, 255, 255);\n"
-"                    color: rgb(0, 0, 255);\n"
-"                    }\n"
-"")
-        self.act_check_pushButton.setObjectName("act_check_pushButton")
-        self.send_mail_pushButton = QtWidgets.QPushButton(parent=self.frame)
-        self.send_mail_pushButton.setGeometry(QtCore.QRect(170, 220, 121, 31))
-        font = QtGui.QFont()
-        font.setBold(True)
-        self.send_mail_pushButton.setFont(font)
-        self.send_mail_pushButton.setStyleSheet("\n"
-"QPushButton:hover {\n"
-"\n"
-"                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));\n"
-"                  color: rgb(255, 255, 255);\n"
-"                  }\n"
-"\n"
-"QPushButton:pressed {\n"
-"                    background-color: rgb(255, 255, 255);\n"
-"                    color: rgb(0, 0, 255);\n"
-"                    }\n"
-"")
-        self.send_mail_pushButton.setObjectName("send_mail_pushButton")
-        self.preference_admin_menu_pushButton_3 = QtWidgets.QPushButton(parent=self.frame)
-        self.preference_admin_menu_pushButton_3.setGeometry(QtCore.QRect(300, 220, 191, 31))
-        font = QtGui.QFont()
-        font.setBold(True)
-        self.preference_admin_menu_pushButton_3.setFont(font)
-        self.preference_admin_menu_pushButton_3.setStyleSheet("\n"
-"QPushButton:hover {\n"
-"\n"
-"                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));\n"
-"                  color: rgb(255, 255, 255);\n"
-"                  }\n"
-"\n"
-"QPushButton:pressed {\n"
-"                    background-color: rgb(255, 255, 255);\n"
-"                    color: rgb(0, 0, 255);\n"
-"                    }\n"
-"")
-        self.preference_admin_menu_pushButton_3.setObjectName("preference_admin_menu_pushButton_3")
-        self.exit_pushButton_4 = QtWidgets.QPushButton(parent=self.frame)
-        self.exit_pushButton_4.setGeometry(QtCore.QRect(500, 220, 91, 31))
-        font = QtGui.QFont()
-        font.setBold(True)
-        self.exit_pushButton_4.setFont(font)
-        self.exit_pushButton_4.setStyleSheet("\n"
-"QPushButton:hover {\n"
-"\n"
-"                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));\n"
-"                  color: rgb(255, 255, 255);\n"
-"                  }\n"
-"\n"
-"QPushButton:pressed {\n"
-"                    background-color: rgb(255, 255, 255);\n"
-"                    color: rgb(0, 0, 255);\n"
-"                    }\n"
-"")
-        self.exit_pushButton_4.setObjectName("exit_pushButton_4")
         self.admin_menu_tableWidget = QtWidgets.QTableWidget(parent=self.frame)
-        self.admin_menu_tableWidget.setGeometry(QtCore.QRect(10, 300, 581, 251))
+        self.admin_menu_tableWidget.setGeometry(QtCore.QRect(10, 250, 581, 261))
         self.admin_menu_tableWidget.setBaseSize(QtCore.QSize(0, 0))
         font = QtGui.QFont()
         font.setFamily("Segoe UI 13")
@@ -139,6 +71,85 @@ class Ui_admin_menu_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.admin_menu_tableWidget.setHorizontalHeaderItem(3, item)
         self.admin_menu_tableWidget.horizontalHeader().setDefaultSectionSize(145)
+        self.groupBox = QtWidgets.QGroupBox(parent=self.frame)
+        self.groupBox.setGeometry(QtCore.QRect(10, 140, 581, 111))
+        self.groupBox.setTitle("")
+        self.groupBox.setObjectName("groupBox")
+        self.act_check_pushButton = QtWidgets.QPushButton(parent=self.groupBox)
+        self.act_check_pushButton.setGeometry(QtCore.QRect(150, 40, 101, 31))
+        font = QtGui.QFont()
+        font.setBold(True)
+        self.act_check_pushButton.setFont(font)
+        self.act_check_pushButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.act_check_pushButton.setStyleSheet("\n"
+"QPushButton:hover{\n"
+"   border-radius : 6px;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  ;\n"
+"    background-color: rgb(218, 30, 60);\n"
+"    border: 1px solid rgb(255, 255, 255);\n"
+"\n"
+"}\n"
+"")
+        self.act_check_pushButton.setObjectName("act_check_pushButton")
+        self.send_mail_pushButton = QtWidgets.QPushButton(parent=self.groupBox)
+        self.send_mail_pushButton.setGeometry(QtCore.QRect(20, 40, 101, 31))
+        font = QtGui.QFont()
+        font.setBold(True)
+        self.send_mail_pushButton.setFont(font)
+        self.send_mail_pushButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.send_mail_pushButton.setStyleSheet("\n"
+"QPushButton:hover{\n"
+"   border-radius : 6px;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  ;\n"
+"    background-color: rgb(218, 30, 60);\n"
+"    border: 1px solid rgb(255, 255, 255);\n"
+"\n"
+"}\n"
+"")
+        self.send_mail_pushButton.setObjectName("send_mail_pushButton")
+        self.preference_admin_menu_pushButton_3 = QtWidgets.QPushButton(parent=self.groupBox)
+        self.preference_admin_menu_pushButton_3.setGeometry(QtCore.QRect(270, 40, 151, 31))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setBold(True)
+        self.preference_admin_menu_pushButton_3.setFont(font)
+        self.preference_admin_menu_pushButton_3.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.preference_admin_menu_pushButton_3.setStyleSheet("\n"
+"QPushButton:hover{\n"
+"   border-radius : 6px;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  ;\n"
+"    background-color: rgb(218, 30, 60);\n"
+"    border: 1px solid rgb(255, 255, 255);\n"
+"\n"
+"}\n"
+"\n"
+"")
+        self.preference_admin_menu_pushButton_3.setObjectName("preference_admin_menu_pushButton_3")
+        self.exit_pushButton_4 = QtWidgets.QPushButton(parent=self.groupBox)
+        self.exit_pushButton_4.setGeometry(QtCore.QRect(450, 40, 101, 31))
+        font = QtGui.QFont()
+        font.setBold(True)
+        self.exit_pushButton_4.setFont(font)
+        self.exit_pushButton_4.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.exit_pushButton_4.setStyleSheet("\n"
+"QPushButton:hover{\n"
+"   border-radius : 6px;\n"
+"    color: rgb(255, 255, 255);\n"
+"    background-color:  ;\n"
+"    background-color: rgb(218, 30, 60);\n"
+"    border: 1px solid rgb(255, 255, 255);\n"
+"\n"
+"}\n"
+"")
+        self.exit_pushButton_4.setObjectName("exit_pushButton_4")
+        self.label = QtWidgets.QLabel(parent=self.frame)
+        self.label.setGeometry(QtCore.QRect(140, 130, 371, 21))
+        self.label.setStyleSheet("background-color: qradialgradient(spread:reflect, cx:0.477, cy:0.568, radius:0.73, fx:0.46, fy:0.575, stop:0.602273 rgba(255, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));")
+        self.label.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
+        self.label.setObjectName("label")
         self.verticalLayout.addWidget(self.frame)
         admin_menu_MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(parent=admin_menu_MainWindow)
@@ -162,10 +173,6 @@ class Ui_admin_menu_MainWindow(object):
     def retranslateUi(self, admin_menu_MainWindow):
         _translate = QtCore.QCoreApplication.translate
         admin_menu_MainWindow.setWindowTitle(_translate("admin_menu_MainWindow", "                                                                                  ADMIN MENU"))
-        self.act_check_pushButton.setText(_translate("admin_menu_MainWindow", "ACTIVITY CONTROL"))
-        self.send_mail_pushButton.setText(_translate("admin_menu_MainWindow", "SEND MAIL"))
-        self.preference_admin_menu_pushButton_3.setText(_translate("admin_menu_MainWindow", "PREFERENCE - ADMIN MENU"))
-        self.exit_pushButton_4.setText(_translate("admin_menu_MainWindow", "EXIT"))
         item = self.admin_menu_tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("admin_menu_MainWindow", "Activity Name"))
         item = self.admin_menu_tableWidget.horizontalHeaderItem(1)
@@ -174,6 +181,11 @@ class Ui_admin_menu_MainWindow(object):
         item.setText(_translate("admin_menu_MainWindow", "Participant Mail"))
         item = self.admin_menu_tableWidget.horizontalHeaderItem(3)
         item.setText(_translate("admin_menu_MainWindow", "Organizer Mail"))
+        self.act_check_pushButton.setText(_translate("admin_menu_MainWindow", "Activity Control"))
+        self.send_mail_pushButton.setText(_translate("admin_menu_MainWindow", "Send Mail"))
+        self.preference_admin_menu_pushButton_3.setText(_translate("admin_menu_MainWindow", "Preference Admin Menü"))
+        self.exit_pushButton_4.setText(_translate("admin_menu_MainWindow", "Exit"))
+        self.label.setText(_translate("admin_menu_MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-family:\'__Inter_46a1ea\',\'__Inter_Fallback_46a1ea\',\'system-ui\',\'arial\'; font-size:10pt; font-weight:600; color:#ffffff;\">CRM (Admin Menu Page)</span></p></body></html>"))
 
 
     def act_check_clicked(self):

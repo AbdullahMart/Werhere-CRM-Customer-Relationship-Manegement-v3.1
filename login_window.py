@@ -62,6 +62,7 @@ def authenticate_user(username, password):
 
 class Ui_LoginMainWindow(object):
     def setupUi(self, LoginMainWindow):
+        self.main_window= LoginMainWindow
         LoginMainWindow.setObjectName("LoginMainWindow")
         LoginMainWindow.resize(500, 385)
         LoginMainWindow.setMinimumSize(QtCore.QSize(500, 385))
@@ -247,8 +248,9 @@ class Ui_LoginMainWindow(object):
             self.adminWindow = QtWidgets.QMainWindow()
             self.adminUi = Ui_admin_pref_men_MainWindow()
             self.adminUi.setupUi(self.adminWindow)
-            self.close()
             self.adminWindow.show()
+            self.main_window.close()
+            
             
         elif result == "user":
             QMessageBox.information(self.centralwidget, "Başarılı", "User girişi başarılı!")
@@ -256,9 +258,8 @@ class Ui_LoginMainWindow(object):
             self.userWindow = QtWidgets.QMainWindow()
             self.userUi =  Ui_MainWindow()
             self.userUi.setupUi(self.userWindow)
-            self.close()
             self.userWindow.show()
-            
+            self.main_window.close()
         else:
             QMessageBox.warning(self, "Hata", "Kullanıcı adı veya şifre hatalı!")
             self.admin_username_lineEdit_3.clear()
@@ -267,15 +268,11 @@ class Ui_LoginMainWindow(object):
     def admin_exit_clicked(self):
         QtWidgets.QApplication.instance().quit()
  
-# Ui_MainWindow sınıfı, QMainWindow sınıfından türetilmemişti ve dolayısıyla close() metodunu doğrudan çağıramıyordu
-class MainWindow(QtWidgets.QMainWindow, Ui_LoginMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setupUi(self)
-
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_LoginMainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
     sys.exit(app.exec())

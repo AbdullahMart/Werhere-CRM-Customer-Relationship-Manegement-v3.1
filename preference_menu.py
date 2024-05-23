@@ -5,6 +5,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
+        self.main_window= MainWindow
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(500, 500)
         MainWindow.setMinimumSize(QtCore.QSize(500, 500))
@@ -187,51 +188,59 @@ class Ui_MainWindow(object):
 
     #Buton Fonksiyonlarının oluşturulduğu yer
     def applications_clicked(self):
-        from  applications_page import Ui_applications_page_MainWindow
-        self.MainWindow = QtWidgets.QMainWindow()
-        self.ui = Ui_applications_page_MainWindow()
-        self.ui.setupUi(self.MainWindow) 
-        self.hide()
-        self.MainWindow.show()
+        self.main_window.close()
+        
+        # Yeni bir işlem başlatarak login_window.py dosyasını çalıştır
+        try:
+            subprocess.Popen(["python", os.path.join(os.path.dirname(__file__), "applications_page.py")])
+        except FileNotFoundError:
+            subprocess.Popen(["python3", os.path.join(os.path.dirname(__file__), "applications_page.py")])
+         
+       
+            
+       
+
 
     def interviews_clicked(self):
         from interviews_page import Ui_interviews_page_MainWindow
         self.MainWindow = QtWidgets.QMainWindow()
         self.ui = Ui_interviews_page_MainWindow()
         self.ui.setupUi(self.MainWindow) 
-        self.hide()
         self.MainWindow.show()
+        self.main_window.close()
+        
         
 
     def mentor_meeting_clicked(self):
-        from mentor_interview_page import Ui_mentor_interviews_page_MainWindow
-        self.MainWindow = QtWidgets.QMainWindow()
-        self.ui = Ui_mentor_interviews_page_MainWindow()
-        self.ui.setupUi(self.MainWindow) 
-        self.hide()
-        self.MainWindow.show()
+        self.main_window.close()
+        
+        # Yeni bir işlem başlatarak login_window.py dosyasını çalıştır
+        try:
+            subprocess.Popen(["python", os.path.join(os.path.dirname(__file__), "mentor_interview_page.py")])
+        except FileNotFoundError:
+            subprocess.Popen(["python3", os.path.join(os.path.dirname(__file__), "mentor_interview_page.py")])
             
 
     def back_menu_clicked(self):
+         # Eski pencereyi kapat
+        self.main_window.close()
         
+        # Yeni bir işlem başlatarak login_window.py dosyasını çalıştır
         try:
             subprocess.Popen(["python", os.path.join(os.path.dirname(__file__), "login_window.py")])
         except FileNotFoundError:
             subprocess.Popen(["python3", os.path.join(os.path.dirname(__file__), "login_window.py")])
 
     def exit_clicked(self):
-        self.close()
+        QtWidgets.QApplication.instance().quit()
         
 
-# Ui_MainWindow sınıfı, QMainWindow sınıfından türetilmemişti ve dolayısıyla close() metodunu doğrudan çağıramıyordu
-class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
-    def __init__(self):
-        super().__init__()
-        self.setupUi(self)
+
 
 if __name__ == "__main__":
-    import sys
     app = QtWidgets.QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
     sys.exit(app.exec())

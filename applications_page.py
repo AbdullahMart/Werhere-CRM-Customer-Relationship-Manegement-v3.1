@@ -1,12 +1,15 @@
+import subprocess
+from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLineEdit, QTableWidget, QLabel, QTableWidgetItem, QComboBox
+from PyQt6.QtGui import QPixmap, QFont
+from PyQt6.QtCore import Qt
+import sys
 import os
 import pickle
-from googleapiclient.discovery import build
+from collections import Counter, defaultdict
 from google.auth.transport.requests import Request
-from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
-from PyQt6 import QtCore, QtGui, QtWidgets
+from googleapiclient.discovery import build
 
-# Hangi kapsamları (scopes) kullanacağınızı belirtin
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # Kimlik doğrulama işlemi
@@ -32,332 +35,434 @@ def list_column_values(service, spreadsheet_id, range_name):
     values = result.get('values', [])
     return values
 
-class Ui_applications_page_MainWindow(object):
-    def setupUi(self, applications_page_MainWindow):
-        applications_page_MainWindow.setObjectName("applications_page_MainWindow")
-        applications_page_MainWindow.resize(1220, 735)
-        applications_page_MainWindow.setMinimumSize(QtCore.QSize(1220, 735))
-        applications_page_MainWindow.setMaximumSize(QtCore.QSize(1220, 735))
-        self.centralwidget = QtWidgets.QWidget(parent=applications_page_MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.frame = QtWidgets.QFrame(parent=self.centralwidget)
-        self.frame.setGeometry(QtCore.QRect(0, 0, 1200, 700))
-        self.frame.setMinimumSize(QtCore.QSize(1200, 700))
-        self.frame.setMaximumSize(QtCore.QSize(1200, 700))
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        font.setBold(True)
-        self.frame.setFont(font)
-        self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame.setObjectName("frame")
-        self.Search_pushButton = QtWidgets.QPushButton(parent=self.frame)
-        self.Search_pushButton.setGeometry(QtCore.QRect(9, 164, 111, 41))
-        self.Search_pushButton.setStyleSheet("QPushButton:hover {\n"
-"                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));\n"
-"                  color: rgb(255, 255, 255);\n"
-"                  }")
-        self.Search_pushButton.setObjectName("Search_pushButton")
-        self.Meetings_with_unassigned_mentor_pushButton = QtWidgets.QPushButton(parent=self.frame)
-        self.Meetings_with_unassigned_mentor_pushButton.setGeometry(QtCore.QRect(9, 283, 311, 41))
-        self.Meetings_with_unassigned_mentor_pushButton.setStyleSheet("QPushButton:hover {\n"
-"                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));\n"
-"                  color: rgb(255, 255, 255);\n"
-"                  }")
-        self.Meetings_with_unassigned_mentor_pushButton.setObjectName("Meetings_with_unassigned_mentor_pushButton")
-        self.Meetings_with_assigned_mentor_pushButton = QtWidgets.QPushButton(parent=self.frame)
-        self.Meetings_with_assigned_mentor_pushButton.setGeometry(QtCore.QRect(9, 223, 231, 41))
-        self.Meetings_with_assigned_mentor_pushButton.setStyleSheet("QPushButton:hover {\n"
-"                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));\n"
-"                  color: rgb(255, 255, 255);\n"
-"                  }")
-        self.Meetings_with_assigned_mentor_pushButton.setObjectName("Meetings_with_assigned_mentor_pushButton")
-        self.Different_records_pushButton = QtWidgets.QPushButton(parent=self.frame)
-        self.Different_records_pushButton.setGeometry(QtCore.QRect(700, 280, 221, 41))
-        self.Different_records_pushButton.setStyleSheet("QPushButton:hover {\n"
-"                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));\n"
-"                  color: rgb(255, 255, 255);\n"
-"                  }")
-        self.Different_records_pushButton.setObjectName("Different_records_pushButton")
-        self.All_applications_pushButton = QtWidgets.QPushButton(parent=self.frame)
-        self.All_applications_pushButton.setGeometry(QtCore.QRect(970, 220, 221, 101))
-        self.All_applications_pushButton.setStyleSheet("QPushButton:hover {\n"
-"                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));\n"
-"                  color: rgb(255, 255, 255);\n"
-"                  }")
-        self.All_applications_pushButton.setObjectName("All_applications_pushButton")
-        self.Filtered_Applications_pushButton = QtWidgets.QPushButton(parent=self.frame)
-        self.Filtered_Applications_pushButton.setGeometry(QtCore.QRect(440, 280, 231, 41))
-        self.Filtered_Applications_pushButton.setStyleSheet("QPushButton:hover {\n"
-"                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));\n"
-"                  color: rgb(255, 255, 255);\n"
-"                  }")
-        self.Filtered_Applications_pushButton.setObjectName("Filtered_Applications_pushButton")
-        self.Former_VIT_Check_pushButton = QtWidgets.QPushButton(parent=self.frame)
-        self.Former_VIT_Check_pushButton.setGeometry(QtCore.QRect(440, 220, 231, 41))
-        self.Former_VIT_Check_pushButton.setStyleSheet("QPushButton:hover {\n"
-"                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));\n"
-"                  color: rgb(255, 255, 255);\n"
-"                  }")
-        self.Former_VIT_Check_pushButton.setObjectName("Former_VIT_Check_pushButton")
-        self.Multiple_records_pushButton = QtWidgets.QPushButton(parent=self.frame)
-        self.Multiple_records_pushButton.setGeometry(QtCore.QRect(700, 220, 221, 41))
-        self.Multiple_records_pushButton.setStyleSheet("QPushButton:hover {\n"
-"                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));\n"
-"                  color: rgb(255, 255, 255);\n"
-"                  }")
-        self.Multiple_records_pushButton.setObjectName("Multiple_records_pushButton")
-        self.Preferences_pushButton = QtWidgets.QPushButton(parent=self.frame)
-        self.Preferences_pushButton.setGeometry(QtCore.QRect(440, 330, 171, 41))
-        self.Preferences_pushButton.setStyleSheet("QPushButton:hover {\n"
-"                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));\n"
-"                  color: rgb(255, 255, 255);\n"
-"                  }")
-        self.Preferences_pushButton.setObjectName("Preferences_pushButton")
-        self.Exit_pushButton = QtWidgets.QPushButton(parent=self.frame)
-        self.Exit_pushButton.setGeometry(QtCore.QRect(1020, 330, 171, 41))
-        self.Exit_pushButton.setStyleSheet("QPushButton:hover {\n"
-"                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));\n"
-"                  color: rgb(255, 255, 255);\n"
-"                  }")
-        self.Exit_pushButton.setObjectName("Exit_pushButton")
-        self.lineEdit = QtWidgets.QLineEdit(parent=self.frame)
-        self.lineEdit.setGeometry(QtCore.QRect(440, 170, 751, 41))
-        self.lineEdit.setObjectName("lineEdit")
-        self.lineEdit_2 = QtWidgets.QLineEdit(parent=self.frame)
-        self.lineEdit_2.setGeometry(QtCore.QRect(520, 50, 161, 41))
-        self.lineEdit_2.setObjectName("lineEdit_2")
-        self.tableWidget = QtWidgets.QTableWidget(parent=self.frame)
-        self.tableWidget.setGeometry(QtCore.QRect(10, 370, 1181, 321))
-        self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(7)
-        self.tableWidget.setRowCount(0)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(3, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(4, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(5, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(6, item)
-        self.tableWidget.horizontalHeader().setDefaultSectionSize(160)
-        self.Werhere = QtWidgets.QLabel(parent=self.frame)
-        self.Werhere.setGeometry(QtCore.QRect(9, 3, 441, 131))
-        self.Werhere.setText("")
-        self.Werhere.setPixmap(QtGui.QPixmap("images/werhere_image.png"))
-        self.Werhere.setObjectName("Werhere")
-        self.Werhere_2 = QtWidgets.QLabel(parent=self.frame)
-        self.Werhere_2.setGeometry(QtCore.QRect(750, 0, 441, 131))
-        self.Werhere_2.setText("")
-        self.Werhere_2.setPixmap(QtGui.QPixmap("werhere_image.png"))
-        self.Werhere_2.setObjectName("Werhere_2")
-        applications_page_MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(parent=applications_page_MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1220, 43))
-        self.menubar.setObjectName("menubar")
-        applications_page_MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(parent=applications_page_MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        applications_page_MainWindow.setStatusBar(self.statusbar)
+class ApplicationWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
 
-        self.retranslateUi(applications_page_MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(applications_page_MainWindow)
+        # Pencere başlığı ve boyutu
+        self.setWindowTitle("Applications")
+        self.setGeometry(100, 100, 1220, 735)
 
+        # Merkezi widget ve ana layout
+        self.centralWidget = QWidget()
+        self.setCentralWidget(self.centralWidget)
+        self.mainLayout = QVBoxLayout(self.centralWidget)
 
-#Push Button
-        # Connect header click event to sort column alphabetically
-        self.tableWidget.horizontalHeader().sectionClicked.connect(self.sort_column_alphabetically)
+        # Arama çubuğu ve butonu yatay layout
+        self.searchLayout = QHBoxLayout()
 
+        # PNG için QLabel
+        self.pngLabel = QLabel()
+        self.pngLabel.setPixmap(QPixmap("images/werhere_image.png"))
+        self.pngLabel.setFixedSize(250, 40)  # PNG boyutunu ayarlayın
+        self.pngLabel.setScaledContents(True)
 
-        self.Exit_pushButton.clicked.connect(self.Exit_clicked)
-        self.Preferences_pushButton.clicked.connect(self.Preferences_clicked)
-        self.Former_VIT_Check_pushButton.clicked.connect(self.Former_VIT_Check_clicked)
-        self.Filtered_Applications_pushButton.clicked.connect(self.Filtered_Applications_clicked)
-        self.Multiple_records_pushButton.clicked.connect(self.Multiple_records_clicked)
-        self.All_applications_pushButton.clicked.connect(self.load_all_applications)
-        self.Meetings_with_assigned_mentor_pushButton.clicked.connect(self.Meetings_with_assigned_mentor_clicked)
-        self.Meetings_with_unassigned_mentor_pushButton.clicked.connect(self.Meetings_with_unassigned_mentor_clicked)
-        self.Search_pushButton.clicked.connect(self.Search_clicked)
+        # QLineEdit ve Search butonu
+        self.searchLineEdit = QLineEdit()
+        self.searchLineEdit.setMaximumWidth(540)  # Arama çubuğunun maksimum genişliğini ayarlayın
+        self.searchLineEdit.setPlaceholderText("Name/Surname")  # Placeholder text
+        self.searchLineEdit.returnPressed.connect(self.search_applications)  # Enter tuşuna basıldığında arama yap
 
+        self.searchButton = QPushButton("Search")
+        self.searchButton.setStyleSheet("""
+        QPushButton {
+            background-color: #696969; /* Koyu gri */
+            border-radius: 10px;
+            padding: 10px;
+            color: white; /* Beyaz metin rengi */
+        }
+        QPushButton:hover {
+            background-color: #40E0D0; /* Turkuaz */
+        }
+        """)
+        self.searchButton.clicked.connect(self.search_applications)  # Butona tıklandığında arama yap
 
+        # PNG ve arama elemanlarını layout'a ekle
+        self.searchLayout.addWidget(self.pngLabel)
+        self.searchLayout.addWidget(self.searchLineEdit)
+        self.searchLayout.addWidget(self.searchButton)
+        self.mainLayout.addLayout(self.searchLayout)
 
-    def retranslateUi(self, applications_page_MainWindow):
-        _translate = QtCore.QCoreApplication.translate
-        applications_page_MainWindow.setWindowTitle(_translate("applications_page_MainWindow", "Applications"))
-        self.Search_pushButton.setText(_translate("applications_page_MainWindow", "Search"))
-        self.Meetings_with_unassigned_mentor_pushButton.setText(_translate("applications_page_MainWindow", "Meetings with unassigned mentor"))
-        self.Meetings_with_assigned_mentor_pushButton.setText(_translate("applications_page_MainWindow", "Meetings with assigned mentor"))
-        self.Different_records_pushButton.setText(_translate("applications_page_MainWindow", "Different records"))
-        self.All_applications_pushButton.setText(_translate("applications_page_MainWindow", "All applications"))
-        self.Filtered_Applications_pushButton.setText(_translate("applications_page_MainWindow", "Filtered applications"))
-        self.Former_VIT_Check_pushButton.setText(_translate("applications_page_MainWindow", "Former VIT Check"))
-        self.Multiple_records_pushButton.setText(_translate("applications_page_MainWindow", "Multiple records"))
-        self.Preferences_pushButton.setText(_translate("applications_page_MainWindow", "Preferences"))
-        self.Exit_pushButton.setText(_translate("applications_page_MainWindow", "EXIT"))
-        self.lineEdit_2.setText(_translate("applications_page_MainWindow", "          APPLICATIONS"))
-        
+        # Diğer butonlar için layout
+        self.buttonLayout = QHBoxLayout()
 
-        self.lineEdit.setPlaceholderText(_translate("applications_page_MainWindow", "      Name or Surname"))
+        self.leftButtonLayout = QVBoxLayout()
+        self.middleButtonLayout = QVBoxLayout()
+        self.rightButtonLayout = QVBoxLayout()
 
-     #Transitions and explainations
+        # Buton stil sayfası (hover rengi turkuaz yapar, köşeleri yuvarlar)
+        button_style = """
+        QPushButton {
+            background-color: #696969; /* Koyu gri */
+            border-radius: 10px;
+            padding: 10px;
+            color: white; /* Beyaz metin rengi */
+        }
+        QPushButton:hover {
+            background-color: #40E0D0; /* Turkuaz */
+        }
+        """
 
-    def Exit_clicked(self):
-        from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton
-        QApplication.instance().quit()   
+        # Buton isimleri ve sıralaması
+        button_texts = [
+            "All Applications", "Meetings with Assigned Mentor", "Filtered Applications",
+            "Multiple Registrations", "Meetings with Unassigned Mentor", "Preferences",
+            "Different Registrations", "Former VIT Check", "EXIT"
+        ]
 
-    def Preferences_clicked(self):
-        from preference_admin_menu import Ui_admin_pref_men_MainWindow
-        self.MainWindow= QtWidgets.QMainWindow()
-        self.ui =Ui_admin_pref_men_MainWindow()
-        self.ui.setupUi(applications_page_MainWindow) 
+        # Butonları oluştur ve uygun layout'a ekle
+        for i, text in enumerate(button_texts):
+            button = QPushButton(text)
+            button.setStyleSheet(button_style)
+            button.setMinimumHeight(40)  # Minimum buton yüksekliği
+            button.clicked.connect(self.handleButtonClick)  # Tıklama olayını bağla
 
-    def Different_Records_clicked(self):
-        
-        # Burasi komple degisecek
-        # self.filtering_list = self.applications    # I added it for filtering.
-        self.worksheet = main.connection_hub('credentials/key.json', 'VIT1-2', 'Sayfa1')
-        self.VIT1 = self.worksheet.get_all_values()
-        self.worksheet = main.connection_hub('credentials/key.json', 'VIT2-2', 'Sayfa1')
-        self.VIT2 = self.worksheet.get_all_values()
+            if i < 3:
+                self.leftButtonLayout.addWidget(button)
+            elif i < 6:
+                self.middleButtonLayout.addWidget(button)
+            else:
+                self.rightButtonLayout.addWidget(button)
 
-        differential_users = [self.VIT1[0]]
-        for user1 in self.VIT1[1:]:
-            found = False
-            for user2 in self.VIT2[1:]:
-                if user1[2] in user2[2]:
-                    found = True
-                    break
-            if not found:
-                differential_users.append(user1)
+        self.buttonLayout.addLayout(self.leftButtonLayout)
+        self.buttonLayout.addLayout(self.middleButtonLayout)
+        self.buttonLayout.addLayout(self.rightButtonLayout)
 
-        for user2 in self.VIT2:
-            found = False
-            for user1 in self.VIT1:
-                if user2[2] in user1[2]:
-                    found = True
-                    break
-            if not found:
-                differential_users.append(user2)
+        self.mainLayout.addLayout(self.buttonLayout)
 
-        if len(differential_users) > 1:  # If the searched_people variable is not empty!
-            # The result obtained with the help of the method is printed into the comboBoxFilterOptions for filtering.
-            # -3 row down-
-            self.filtering_list = differential_users  # Assigned for filtering.
-            self.form_applications.comboBoxFilterOptions.clear()
-            self.form_applications.comboBoxFilterOptions.addItems(main.filter_active_options(self.filtering_list, self.filtering_column))
-        else:
-            no_application = ['There is no differential applicant!']
-            [no_application.append('-') for i in range(len(self.applications[0]) - 1)]
-            differential_users.append(no_application)
-            # differential_users.append(['There is no differential applicant!', '-', '-', '-', '-', '-', '-', '-', ])
-            # Above - one line - code works as same as active code. But active code is automated for cell amount
-        return main.write2table(self.form_applications, differential_users)
-        
-    def Former_VIT_Check_clicked(self):
+        # ComboBox'u butonların altına ekle
+        self.comboBox = QComboBox()
+        self.comboBox.addItems([
+            "Language level B1 and above [Ingilizce]",
+            "Language level A2 and below [Ingilizce]",
+            "Language level B1 and above [Nederlands]",
+            "Language level A2 and below [Nederlands]",
+            "At least one of English and Nederlands is at B1 level"
+        ])
+        self.comboBox.currentIndexChanged.connect(self.handleComboBoxChange)
+        self.mainLayout.addWidget(self.comboBox)
 
-        print("-------Now you are looking at Former_VIT_Check")
+        # QTableWidget
+        self.tableWidget = QTableWidget()
+        self.tableWidget.setFont(QFont("Arial", 11))
+        self.tableWidget.setSortingEnabled(True)  # Sıralama etkinleştirildi
+        self.tableWidget.setSizeAdjustPolicy(QTableWidget.SizeAdjustPolicy.AdjustToContents)
+        self.mainLayout.addWidget(self.tableWidget)
 
-    def Filtered_Applications_clicked(self):
+    def handleButtonClick(self):
+        sender = self.sender()
+        if sender.text() == "All Applications":
+            self.load_all_applications()
+        elif sender.text() == "Multiple Registrations":
+            self.find_multiple_registrations()
+        elif sender.text() == "Meetings with Assigned Mentor":
+            self.find_assigned_mentor_meetings()
+        elif sender.text() == "Meetings with Unassigned Mentor":
+            self.find_unassigned_mentor_meetings()
+        elif sender.text() == "Filtered Applications":
+            self.find_filtered_applications()
+        elif sender.text() == "Preferences":
+            self.open_preferences()
+        elif sender.text() == "Different Registrations":
+            self.find_different_registrations()
+        elif sender.text() == "Former VIT Check":
+            self.former_vit_check()
+        elif sender.text() == "EXIT":
+            self.exit_application()
 
-        filtered_unique_applications = [self.applications[0]]
-        unique_names = set()
-        for application in self.applications[1:]:
-            if application[2].strip().lower() not in unique_names:
-                filtered_unique_applications.append(application)
-                unique_names.add(application[2].strip().lower())
+    def handleComboBoxChange(self):
+        index = self.comboBox.currentIndex()
+        if index == 0:
+            self.find_language_level("K", ["B1", "B2 ve üzeri", "C1", "C2"])
+        elif index == 1:
+            self.find_language_level("K", ["A0", "A1", "A2"])
+        elif index == 2:
+            self.find_language_level("L", ["B1", "B2 ve üzeri", "C1", "C2"])
+        elif index == 3:
+            self.find_language_level("L", ["A0", "A1", "A2"])
+        elif index == 4:
+            self.find_combined_language_level()
 
-        if len(filtered_unique_applications) > 1:  # If the filtered_unique_applications variable is not empty!
-            # The result obtained with the help of the method is printed into the comboBoxFilterOptions for filtering.
-            # -3 row down-
-            self.filtering_list = filtered_unique_applications  # Assigned for filtering.
-            self.form_applications.comboBoxFilterOptions.clear()
-            self.form_applications.comboBoxFilterOptions.addItems(main.filter_active_options(self.filtering_list, self.filtering_column))
-        else:
-            no_application = ['There is no application!']
-            [no_application.append('-') for i in range(len(self.filtering_list[0]) - 1)]
-            filtered_unique_applications.append(no_application)
-            # filtered_unique_applications.append(['There is no application!', '-', '-', '-', '-', '-', '-', '-', ])
-            # Above - one line - code works as same as active code. But active code is automated for cell amount
-        return main.write2table(self.form_applications, filtered_unique_applications)
+    def find_language_level(self, column_letter, levels):
+        try:
+            creds = authenticate()
+            service = build('sheets', 'v4', credentials=creds)
+            spreadsheet_id = '1Ls6wq8vi_fKfVIqYiTpx3RrC4KZvPlT60D63sXboNbM'  # Kendi Spreadsheet ID'nizi ekleyin
+            range_name = 'Sayfa1!A1:V40'  # Kendi veri aralığınızı ekleyin
+            data = list_column_values(service, spreadsheet_id, range_name)
+            headers = data[0]
+
+            # Sütun harfinden indeksi bul
+            column_index = ord(column_letter) - ord('A')
+
+            filtered_data = [row for row in data if len(row) > column_index and row[column_index] in levels]
+            filtered_data.insert(0, headers)  # Başlıkları tekrar ekle
+
+            self.load_data(filtered_data)
+        except Exception as e:
+            print(f"Error finding language level {column_letter}: {e}")
+
+    def find_combined_language_level(self):
+        try:
+            creds = authenticate()
+            service = build('sheets', 'v4', credentials=creds)
+            spreadsheet_id = '1Ls6wq8vi_fKfVIqYiTpx3RrC4KZvPlT60D63sXboNbM'  # Kendi Spreadsheet ID'nizi ekleyin
+            range_name = 'Sayfa1!A1:V40'  # Kendi veri aralığınızı ekleyin
+            data = list_column_values(service, spreadsheet_id, range_name)
+            headers = data[0]
+
+            english_column_index = ord('K') - ord('A')
+            dutch_column_index = ord('L') - ord('A')
+            levels = ["B1", "B2 ve üzeri", "C1", "C2"]
+
+            filtered_data = [row for row in data if (
+                (len(row) > english_column_index and row[english_column_index] in levels) or 
+                (len(row) > dutch_column_index and row[dutch_column_index] in levels)
+            )]
+            filtered_data.insert(0, headers)  # Başlıkları tekrar ekle
+
+            self.load_data(filtered_data)
+        except Exception as e:
+            print(f"Error finding combined language levels: {e}")
 
     def load_all_applications(self):
-        # Kimlik doğrulaması yap
-        creds = authenticate()
-        service = build('sheets', 'v4', credentials=creds)
+        try:
+            creds = authenticate()
+            service = build('sheets', 'v4', credentials=creds)
+            spreadsheet_id = '1Ls6wq8vi_fKfVIqYiTpx3RrC4KZvPlT60D63sXboNbM'  # Kendi Spreadsheet ID'nizi ekleyin
+            range_name = 'Sayfa1!A1:V40'  # Kendi veri aralığınızı ekleyin
+            data = list_column_values(service, spreadsheet_id, range_name)
+            print("Data retrieved from Google Sheets:", data)  # Hata ayıklama için veriyi yazdırın
+            self.load_data(data)
+        except Exception as e:
+            print(f"Error loading data: {e}")
 
-        # Google Sheets ID ve aralığını belirle
-        spreadsheet_id = '1Ls6wq8vi_fKfVIqYiTpx3RrC4KZvPlT60D63sXboNbM'  # Google Sheets ID'nizi buraya girin
-        range_name = 'Sayfa1!A1:Z1000'  # Aralığı ihtiyaçlarınıza göre ayarlayın
+    def find_multiple_registrations(self):
+        try:
+            creds = authenticate()
+            service = build('sheets', 'v4', credentials=creds)
+            spreadsheet_id = '1Ls6wq8vi_fKfVIqYiTpx3RrC4KZvPlT60D63sXboNbM'  # Kendi Spreadsheet ID'nizi ekleyin
+            range_name = 'Sayfa1!A1:V40'  # Kendi veri aralığınızı ekleyin
+            data = list_column_values(service, spreadsheet_id, range_name)
+            headers = data[0]
+            name_column = [row[1].strip().lower() for row in data[1:]]  # B sütunu (isimler) büyük/küçük harf duyarsız
+            name_counts = Counter(name_column)
 
-        # Verileri çek
-        values = list_column_values(service, spreadsheet_id, range_name)
+            # Birden fazla kayıt bulunan isimler
+            multiple_names = {name for name, count in name_counts.items() if count > 1}
 
-        if not values:
-            print('No data found.')
+            # İlgili satırları filtrele
+            filtered_data = [row for row in data if row[1].strip().lower() in multiple_names]
+            filtered_data.insert(0, headers)  # Başlıkları tekrar ekle
+
+            self.load_data(filtered_data)
+        except Exception as e:
+            print(f"Error finding multiple registrations: {e}")
+
+    def find_assigned_mentor_meetings(self):
+        try:
+            creds = authenticate()
+            service = build('sheets', 'v4', credentials=creds)
+            spreadsheet_id = '1Ls6wq8vi_fKfVIqYiTpx3RrC4KZvPlT60D63sXboNbM'  # Kendi Spreadsheet ID'nizi ekleyin
+            range_name = 'Sayfa1!A1:V40'  # Kendi veri aralığınızı ekleyin
+            data = list_column_values(service, spreadsheet_id, range_name)
+            headers = data[0]
+            
+            # "Mentor Görüşmesi" sütunu U (21. sütun) olduğu için kontrol edin
+            filtered_data = [row for row in data if len(row) > 20 and row[20].strip().
+                        strip().upper() == "OK"]
+            filtered_data.insert(0, headers)  # Başlıkları tekrar ekle
+            
+            self.load_data(filtered_data)
+        except Exception as e:
+            print(f"Error finding assigned mentor meetings: {e}")
+
+    def find_unassigned_mentor_meetings(self):
+        try:
+            creds = authenticate()
+            service = build('sheets', 'v4', credentials=creds)
+            spreadsheet_id = '1Ls6wq8vi_fKfVIqYiTpx3RrC4KZvPlT60D63sXboNbM'  # Kendi Spreadsheet ID'nizi ekleyin
+            range_name = 'Sayfa1!A1:V40'  # Kendi veri aralığınızı ekleyin
+            data = list_column_values(service, spreadsheet_id, range_name)
+            headers = data[0]
+            
+            # "Mentor Görüşmesi" sütunu U (21. sütun) olduğu için kontrol edin
+            filtered_data = [row for row in data if len(row) > 20 and row[20].strip().upper() != "OK"]
+            filtered_data.insert(0, headers)  # Başlıkları tekrar ekle
+            
+            self.load_data(filtered_data)
+        except Exception as e:
+            print(f"Error finding unassigned mentor meetings: {e}")
+
+    def find_filtered_applications(self):
+        try:
+            creds = authenticate()
+            service = build('sheets', 'v4', credentials=creds)
+            spreadsheet_id = '1Ls6wq8vi_fKfVIqYiTpx3RrC4KZvPlT60D63sXboNbM'  # Kendi Spreadsheet ID'nizi ekleyin
+            range_name = 'Sayfa1!A1:V40'  # Kendi veri aralığınızı ekleyin
+            data = list_column_values(service, spreadsheet_id, range_name)
+            headers = data[0]
+            
+            seen_names = set()
+            filtered_data = []
+            
+            for row in data[1:]:
+                name = row[1].strip().lower()  # B sütunu (isim ve soyisim) büyük/küçük harf duyarsız
+                if name not in seen_names:
+                    seen_names.add(name)
+                    filtered_data.append(row)
+            
+            filtered_data.insert(0, headers)  # Başlıkları tekrar ekle
+            
+            self.load_data(filtered_data)
+        except Exception as e:
+            print(f"Error finding filtered applications: {e}")
+
+    def load_data(self, data):
+        if not data:
+            print("No data found.")
             return
 
-        # QTableWidget'e sütun başlıklarını ve verileri yükle
-        self.tableWidget.setColumnCount(len(values[0]))
-        self.tableWidget.setRowCount(len(values))
+        headers = data[0]  # İlk satır başlıkları içerir
+        rows = len(data)
+        cols = len(headers)
 
-        # Set column headers from the first row of Google Sheets
-        for col_idx, header in enumerate(values[0]):
-            self.tableWidget.setHorizontalHeaderItem(col_idx, QtWidgets.QTableWidgetItem(header))
+        self.tableWidget.setRowCount(rows - 1)
+        self.tableWidget.setColumnCount(cols)
 
-        # Load data excluding header row
-        for row_idx, row_data in enumerate(values[1:]):
-            for col_idx, cell_data in enumerate(row_data):
-                self.tableWidget.setItem(row_idx, col_idx, QtWidgets.QTableWidgetItem(cell_data))
+        # Sütun başlıklarını ayarla
+        self.tableWidget.setHorizontalHeaderLabels(headers)
 
-    # Function to sort column alphabetically when header is clicked
-    def sort_column_alphabetically(self, logical_index):
-        self.tableWidget.sortItems(logical_index, QtCore.Qt.SortOrder.AscendingOrder)
+        # Verileri tabloya ekle
+        for row in range(1, rows):
+            for col in range(cols):
+                item = QTableWidgetItem(data[row][col])
+                self.tableWidget.setItem(row - 1, col, item)
 
-    def Multiple_records_clicked(self):
-        print("-------Now you are looking at Multiple_records")
-    def Meetings_with_assigned_mentor_clicked(self):
-        print("-------Now you are looking at Meetings_with_assigned_mentor")
-    def Meetings_with_unassigned_mentor_clicked(self):
-        print("-------Now you are looking at Meetings_with_unassigned_mentor")
-    def Search_clicked(self):
+        self.tableWidget.resizeColumnsToContents()
+        self.tableWidget.resizeRowsToContents()
 
-        searched_applications = [self.applications[0]]
-        for application in self.applications[1:]:
-            if (self.form_applications.lineEditSearch.text().strip().lower() in application[2].strip().lower()
-                    and self.form_applications.lineEditSearch.text().strip().lower() != ''):
-                searched_applications.append(application)
+    def search_applications(self):
+        search_text = self.searchLineEdit.text().strip().lower()
+        if not search_text:
+            return
+        
+        try:
+            creds = authenticate()
+            service = build('sheets', 'v4', credentials=creds)
+            spreadsheet_id = '1Ls6wq8vi_fKfVIqYiTpx3RrC4KZvPlT60D63sXboNbM'  # Kendi Spreadsheet ID'nizi ekleyin
+            range_name = 'Sayfa1!A1:V40'  # Kendi veri aralığınızı ekleyin
+            data = list_column_values(service, spreadsheet_id, range_name)
+            headers = data[0]
+            filtered_data = [row for row in data if search_text in row[1].lower()]
+            filtered_data.insert(0, headers)  # Başlıkları tekrar ekle
+            self.load_data(filtered_data)
+        except Exception as e:
+            print(f"Error searching data: {e}")
 
-        # Make empty the search area
-        self.form_applications.lineEditSearch.setText('')
+    def former_vit_check(self):
+        try:
+            creds = authenticate()
+            service = build('sheets', 'v4', credentials=creds)
 
-        if len(searched_applications) > 1:  # If the searched_people variable is not empty!
-            # The result obtained with the help of the method is printed into the comboBoxFilterOptions for filtering.
-            # -3 row down-
-            self.filtering_list = searched_applications  # Assigned for filtering.
-            self.form_applications.comboBoxFilterOptions.clear()
-            self.form_applications.comboBoxFilterOptions.addItems(main.filter_active_options(self.filtering_list, self.filtering_column))
-        else:
-            self.form_applications.comboBoxFilterOptions.clear()    # clears the combobox
-            no_application = ['No User or Mentor Found!']
-            [no_application.append('-') for i in range(len(self.applications[0]) - 1)]
-            searched_applications.append(no_application)
-            # searched_applications.append(['No User or Mentor Found!', '-', '-', '-', '-', '-', '-', '-', ])
-            # Above - one line - code works as same as active code. But active code is automated for cell amount
-        return main.write2table(self.form_applications, searched_applications)
+            # VIT1 dosyasından verileri çek
+            vit1_spreadsheet_id = '1JKrqbqj6kmwE7jVgSScQbIVXu3QeEnDYZZ6cxl8nXbA'
+            vit1_range_name = 'Sayfa1!A1:V40'
+            vit1_data = list_column_values(service, vit1_spreadsheet_id, vit1_range_name)
+            vit1_names = {row[1].strip().lower() for row in vit1_data[1:]}
 
+            # VIT2 dosyasından verileri çek
+            vit2_spreadsheet_id = '1NHQPJGHnyIwX1GCXE8nWDeVL5_GTEMJbRnaA2Vemmr0'
+            vit2_range_name = 'Sayfa1!A1:V40'
+            vit2_data = list_column_values(service, vit2_spreadsheet_id, vit2_range_name)
+            vit2_names = {row[1].strip().lower() for row in vit2_data[1:]}
 
+            # Başvurular dosyasından verileri çek
+            basvurular_spreadsheet_id = '1Ls6wq8vi_fKfVIqYiTpx3RrC4KZvPlT60D63sXboNbM'
+            basvurular_range_name = 'Sayfa1!A1:V40'
+            basvurular_data = list_column_values(service, basvurular_spreadsheet_id, basvurular_range_name)
+            headers = basvurular_data[0]
+
+            # İsimlerin en az iki dosyada bulunduğunu kontrol et
+            all_names = defaultdict(int)
+            for name in vit1_names:
+                all_names[name] += 1
+            for name in vit2_names:
+                all_names[name] += 1
+            for row in basvurular_data[1:]:
+                name = row[1].strip().lower()
+                all_names[name] += 1
+
+            # En az iki dosyada bulunan isimleri filtrele
+            common_names = {name for name, count in all_names.items() if count > 1}
+
+            # İlgili satırları filtrele ve aynı kişiyi sadece bir kez ekle
+            added_names = set()
+            filtered_data = []
+            for row in basvurular_data[1:]:
+                name = row[1].strip().lower()
+                if name in common_names and name not in added_names:
+                    filtered_data.append(row)
+                    added_names.add(name)
+
+            filtered_data.insert(0, headers)  # Başlıkları tekrar ekle
+
+            self.load_data(filtered_data)
+        except Exception as e:
+            print(f"Error finding former VIT check: {e}")
+
+    def find_different_registrations(self):
+        try:
+            creds = authenticate()
+            service = build('sheets', 'v4', credentials=creds)
+
+            # VIT1 dosyasından verileri çek
+            vit1_spreadsheet_id = '1JKrqbqj6kmwE7jVgSScQbIVXu3QeEnDYZZ6cxl8nXbA'
+            vit1_range_name = 'Sayfa1!A1:V40'
+            vit1_data = list_column_values(service, vit1_spreadsheet_id, vit1_range_name)
+            vit1_names = {row[1].strip().lower() for row in vit1_data[1:]}
+
+            # VIT2 dosyasından verileri çek
+            vit2_spreadsheet_id = '1NHQPJGHnyIwX1GCXE8nWDeVL5_GTEMJbRnaA2Vemmr0'
+            vit2_range_name = 'Sayfa1!A1:V40'
+            vit2_data = list_column_values(service, vit2_spreadsheet_id, vit2_range_name)
+            vit2_names = {row[1].strip().lower() for row in vit2_data[1:]}
+
+            # Başvurular dosyasından verileri çek
+            basvurular_spreadsheet_id = '1Ls6wq8vi_fKfVIqYiTpx3RrC4KZvPlT60D63sXboNbM'
+            basvurular_range_name = 'Sayfa1!A1:V40'
+            basvurular_data = list_column_values(service, basvurular_spreadsheet_id, basvurular_range_name)
+            headers = basvurular_data[0]
+
+            # VIT1 ve VIT2 dosyalarında olmayan isimleri bul
+            vit1_vit2_names = vit1_names.union(vit2_names)
+            different_names = {row[1].strip().lower() for row in basvurular_data[1:] if row[1].strip().lower() not in vit1_vit2_names}
+
+            # İlgili satırları filtrele ve aynı kişiyi sadece bir kez ekle
+            filtered_data = [row for row in basvurular_data[1:] if row[1].strip().lower() in different_names]
+            filtered_data.insert(0, headers)  # Başlıkları tekrar ekle
+
+            self.load_data(filtered_data)
+        except Exception as e:
+            print(f"Error finding different registrations: {e}")
+
+    def open_preferences(self):
+        self.close()
+        try:
+            subprocess.Popen(["python3", os.path.join(os.path.dirname(__file__), "preference_admin_menu.py")])
+        except FileNotFoundError:
+            subprocess.Popen(["python", os.path.join(os.path.dirname(__file__), "preference_admin_menu.py")])
+
+    def exit_application(self):
+        self.close()
+        try:
+            subprocess.Popen(["python3", os.path.join(os.path.dirname(__file__), "login_window.py")])
+        except FileNotFoundError:
+            subprocess.Popen(["python", os.path.join(os.path.dirname(__file__), "login_window.py")])
 
 if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    applications_page_MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_applications_page_MainWindow()
-    ui.setupUi(applications_page_MainWindow)
-    applications_page_MainWindow.show()
-    sys.exit(app.exec())
+    app = QApplication([])
+    window = ApplicationWindow()
+    window.show()
+    app.exec()
+
