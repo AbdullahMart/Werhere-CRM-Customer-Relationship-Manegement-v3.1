@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>admin_pref_men_MainWindow</class>
+ <widget class="QMainWindow" name="admin_pref_men_MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>500</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>500</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="acceptDrops">
+   <bool>false</bool>
+  </property>
+  <property name="windowTitle">
+   <string>                                                          Admin Preference Menu </string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="admin_preference_menu_frame">
+    <property name="geometry">
+     <rect>
+      <x>-150</x>
+      <y>-100</y>
+      <width>721</width>
+      <height>661</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: qlineargradient(spread:pad, x1:0.489, y1:1, x2:0.494, y2:0, stop:0 rgba(71, 71, 71, 255), stop:1 rgba(255, 255, 255, 255));</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="werhere_image_label">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>110</y>
+       <width>481</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(255, 255, 255, 5);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>images/werhere_image.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>250</y>
+       <width>371</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: qradialgradient(spread:reflect, cx:0.477, cy:0.568, radius:0.73, fx:0.46, fy:0.575, stop:0.602273 rgba(255, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Sunken</enum>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-family:'__Inter_46a1ea','__Inter_Fallback_46a1ea','system-ui','arial'; font-size:10pt; font-weight:600; color:#ffffff;&quot;&gt;CRM - Admin Preference Menu&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>260</y>
+       <width>391</width>
+       <height>221</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+QGroupBox{
+	border-radius : 15px;
+background-color: qradialgradient(spread:pad, cx:0.488409, cy:0.557, radius:0.73, fx:0.482955, fy:0.568909, stop:0 rgba(89, 87, 87, 255), stop:1 rgba(255, 255, 255, 255));
+    border: 1px solid rgb(255, 255, 255);
+}</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QPushButton" name="interviews_pushButton">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>120</y>
+        <width>111</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+QPushButton:hover{
+   border-radius : 6px;
+	color: rgb(255, 255, 255);
+	background-color:  ;
+	background-color: rgb(218, 30, 60);
+    border: 1px solid rgb(255, 255, 255);
+
+}
+
+QPushButton:pressed {
+                    background-color: rgb(255, 255, 255);
+                    color: rgb(0, 0, 255);
+                    }</string>
+      </property>
+      <property name="text">
+       <string>Interviews</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="mentor_interview_pushButton">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>40</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+QPushButton:hover{
+   border-radius : 6px;
+	color: rgb(255, 255, 255);
+	background-color:  ;
+	background-color: rgb(218, 30, 60);
+    border: 1px solid rgb(255, 255, 255);
+
+}
+
+QPushButton:pressed {
+                    background-color: rgb(255, 255, 255);
+                    color: rgb(0, 0, 255);
+                    }</string>
+      </property>
+      <property name="text">
+       <string>Mentor Interview</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="back_menu_pushButton">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>180</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+QPushButton:hover{
+   border-radius : 6px;
+	color: rgb(255, 255, 255);
+	background-color:  ;
+	background-color: rgb(218, 30, 60);
+    border: 1px solid rgb(255, 255, 255);
+
+}
+
+QPushButton:pressed {
+                    background-color: rgb(255, 255, 255);
+                    color: rgb(0, 0, 255);
+                    }</string>
+      </property>
+      <property name="text">
+       <string>Main Menu</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="Exit_pushButton">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>180</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+QPushButton:hover{
+   border-radius : 6px;
+	color: rgb(255, 255, 255);
+	background-color:  ;
+	background-color: rgb(218, 30, 60);
+    border: 1px solid rgb(255, 255, 255);
+
+}
+
+QPushButton:pressed {
+                    background-color: rgb(255, 255, 255);
+                    color: rgb(0, 0, 255);
+                    }</string>
+      </property>
+      <property name="text">
+       <string>Exit</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="application_page_pushButton">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>40</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+QPushButton:hover{
+   border-radius : 6px;
+	color: rgb(255, 255, 255);
+	background-color:  ;
+	background-color: rgb(218, 30, 60);
+    border: 1px solid rgb(255, 255, 255);
+
+}
+
+QPushButton:pressed {
+                    background-color: rgb(255, 255, 255);
+                    color: rgb(0, 0, 255);
+                    }</string>
+      </property>
+      <property name="text">
+       <string>Applications</string>
+      </property>
+     </widget>
+    </widget>
+    <zorder>werhere_image_label</zorder>
+    <zorder>groupBox</zorder>
+    <zorder>label</zorder>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>500</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
