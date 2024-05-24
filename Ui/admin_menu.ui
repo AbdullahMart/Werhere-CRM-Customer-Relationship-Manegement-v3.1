@@ -44,6 +44,9 @@
         <height>550</height>
        </size>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0.489, y1:1, x2:0.494, y2:0, stop:0 rgba(71, 71, 71, 255), stop:1 rgba(255, 255, 255, 255));</string>
+      </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
       </property>
@@ -53,154 +56,32 @@
       <widget class="QLabel" name="werhere_image_label">
        <property name="geometry">
         <rect>
-         <x>0</x>
-         <y>-10</y>
-         <width>600</width>
-         <height>171</height>
+         <x>10</x>
+         <y>20</y>
+         <width>581</width>
+         <height>111</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
        </property>
        <property name="text">
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>../vit_4_week_7_project/werhere_image.png</pixmap>
+        <pixmap>../images/werhere_image.png</pixmap>
        </property>
-      </widget>
-      <widget class="QPushButton" name="act_check_pushButton">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>220</y>
-         <width>151</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">
-QPushButton:hover {
-
-                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));
-                  color: rgb(255, 255, 255);
-                  }
-
-QPushButton:pressed {
-                    background-color: rgb(255, 255, 255);
-                    color: rgb(0, 0, 255);
-                    }
-</string>
-       </property>
-       <property name="text">
-        <string>ACTIVITY CONTROL</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="send_mail_pushButton">
-       <property name="geometry">
-        <rect>
-         <x>170</x>
-         <y>220</y>
-         <width>121</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">
-QPushButton:hover {
-
-                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));
-                  color: rgb(255, 255, 255);
-                  }
-
-QPushButton:pressed {
-                    background-color: rgb(255, 255, 255);
-                    color: rgb(0, 0, 255);
-                    }
-</string>
-       </property>
-       <property name="text">
-        <string>SEND MAIL</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="preference_admin_menu_pushButton_3">
-       <property name="geometry">
-        <rect>
-         <x>300</x>
-         <y>220</y>
-         <width>191</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">
-QPushButton:hover {
-
-                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));
-                  color: rgb(255, 255, 255);
-                  }
-
-QPushButton:pressed {
-                    background-color: rgb(255, 255, 255);
-                    color: rgb(0, 0, 255);
-                    }
-</string>
-       </property>
-       <property name="text">
-        <string>PREFERENCE - ADMIN MENU</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="exit_pushButton_4">
-       <property name="geometry">
-        <rect>
-         <x>500</x>
-         <y>220</y>
-         <width>91</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">
-QPushButton:hover {
-
-                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));
-                  color: rgb(255, 255, 255);
-                  }
-
-QPushButton:pressed {
-                    background-color: rgb(255, 255, 255);
-                    color: rgb(0, 0, 255);
-                    }
-</string>
-       </property>
-       <property name="text">
-        <string>EXIT</string>
+       <property name="scaledContents">
+        <bool>true</bool>
        </property>
       </widget>
       <widget class="QTableWidget" name="admin_menu_tableWidget">
        <property name="geometry">
         <rect>
          <x>10</x>
-         <y>300</y>
+         <y>250</y>
          <width>581</width>
-         <height>251</height>
+         <height>261</height>
         </rect>
        </property>
        <property name="baseSize">
@@ -249,6 +130,172 @@ QPushButton:pressed {
          <string>Organizer Mail</string>
         </property>
        </column>
+      </widget>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>140</y>
+         <width>581</width>
+         <height>111</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QPushButton" name="act_check_pushButton">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>40</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+QPushButton:hover{
+   border-radius : 6px;
+	color: rgb(255, 255, 255);
+	background-color:  ;
+	background-color: rgb(218, 30, 60);
+    border: 1px solid rgb(255, 255, 255);
+
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Activity Control</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="send_mail_pushButton">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>40</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+QPushButton:hover{
+   border-radius : 6px;
+	color: rgb(255, 255, 255);
+	background-color:  ;
+	background-color: rgb(218, 30, 60);
+    border: 1px solid rgb(255, 255, 255);
+
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Send Mail</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="preference_admin_menu_pushButton_3">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>40</y>
+          <width>151</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+QPushButton:hover{
+   border-radius : 6px;
+	color: rgb(255, 255, 255);
+	background-color:  ;
+	background-color: rgb(218, 30, 60);
+    border: 1px solid rgb(255, 255, 255);
+
+}
+
+</string>
+        </property>
+        <property name="text">
+         <string>Preference Admin Menü</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="exit_pushButton_4">
+        <property name="geometry">
+         <rect>
+          <x>450</x>
+          <y>40</y>
+          <width>101</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+QPushButton:hover{
+   border-radius : 6px;
+	color: rgb(255, 255, 255);
+	background-color:  ;
+	background-color: rgb(218, 30, 60);
+    border: 1px solid rgb(255, 255, 255);
+
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Exit</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>130</y>
+         <width>371</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qradialgradient(spread:reflect, cx:0.477, cy:0.568, radius:0.73, fx:0.46, fy:0.575, stop:0.602273 rgba(255, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Sunken</enum>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-family:'__Inter_46a1ea','__Inter_Fallback_46a1ea','system-ui','arial'; font-size:10pt; font-weight:600; color:#ffffff;&quot;&gt;CRM (Admin Menu Page)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
       </widget>
      </widget>
     </item>

@@ -12,7 +12,7 @@ from googleapiclient.discovery import build
 from google.auth.transport.requests import Request
 
 # Google Sheets API erişim kapsamı ve sayfa bilgileri
-SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
+SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/calendar','https://www.googleapis.com/auth/calendar.readonly']
 SPREADSHEET_ID = '1Ak9sLDxCEGy092Pa7lXFahpJcG0xLUxpNHhTwOzE-_c'
 RANGE_NAME = 'Sayfa1!A1:K40'
 

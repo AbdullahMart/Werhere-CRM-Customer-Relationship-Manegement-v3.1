@@ -10,7 +10,7 @@ from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
-SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
+SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/calendar','https://www.googleapis.com/auth/calendar.readonly']
 
 # Kimlik doğrulama işlemi
 def authenticate():
@@ -449,16 +449,16 @@ class ApplicationWindow(QMainWindow):
     def open_preferences(self):
         self.close()
         try:
-            subprocess.Popen(["python3", os.path.join(os.path.dirname(__file__), "preference_admin_menu.py")])
-        except FileNotFoundError:
             subprocess.Popen(["python", os.path.join(os.path.dirname(__file__), "preference_admin_menu.py")])
+        except FileNotFoundError:
+            subprocess.Popen(["python3", os.path.join(os.path.dirname(__file__), "preference_admin_menu.py")])
 
     def exit_application(self):
         self.close()
         try:
-            subprocess.Popen(["python3", os.path.join(os.path.dirname(__file__), "login_window.py")])
-        except FileNotFoundError:
             subprocess.Popen(["python", os.path.join(os.path.dirname(__file__), "login_window.py")])
+        except FileNotFoundError:
+            subprocess.Popen(["python3", os.path.join(os.path.dirname(__file__), "login_window.py")])
 
 if __name__ == "__main__":
     app = QApplication([])

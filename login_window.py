@@ -8,7 +8,7 @@ from PyQt6 import QtWidgets, QtGui, QtCore
 from PyQt6.QtWidgets import QMessageBox
 
 # Google Sheets API kapsamları
-SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
+SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly','https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/calendar']
 
 def list_column_values(service, spreadsheet_id, range_name):
     """

@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>636</width>
+    <width>650</width>
     <height>650</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>636</width>
+    <width>650</width>
     <height>650</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>636</width>
+    <width>650</width>
     <height>711</height>
    </size>
   </property>
@@ -31,7 +31,7 @@
      <widget class="QFrame" name="frame">
       <property name="minimumSize">
        <size>
-        <width>600</width>
+        <width>625</width>
         <height>650</height>
        </size>
       </property>
@@ -40,6 +40,9 @@
         <width>600</width>
         <height>650</height>
        </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: qlineargradient(spread:pad, x1:0.489, y1:1, x2:0.494, y2:0, stop:0 rgba(71, 71, 71, 255), stop:1 rgba(255, 255, 255, 255));</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -53,222 +56,13 @@
       <property name="midLineWidth">
        <number>0</number>
       </property>
-      <widget class="QLineEdit" name="search_lineEdit">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>160</y>
-         <width>421</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="contextMenuPolicy">
-        <enum>Qt::DefaultContextMenu</enum>
-       </property>
-       <property name="accessibleName">
-        <string/>
-       </property>
-       <property name="accessibleDescription">
-        <string/>
-       </property>
-       <property name="autoFillBackground">
-        <bool>false</bool>
-       </property>
-       <property name="inputMethodHints">
-        <set>Qt::ImhNone</set>
-       </property>
-       <property name="inputMask">
-        <string/>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="echoMode">
-        <enum>QLineEdit::Normal</enum>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-       <property name="dragEnabled">
-        <bool>false</bool>
-       </property>
-       <property name="readOnly">
-        <bool>false</bool>
-       </property>
-       <property name="cursorMoveStyle">
-        <enum>Qt::LogicalMoveStyle</enum>
-       </property>
-       <property name="clearButtonEnabled">
-        <bool>false</bool>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="search_pushButton">
-       <property name="geometry">
-        <rect>
-         <x>470</x>
-         <y>160</y>
-         <width>121</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">
-QPushButton:hover {
-
-                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));
-                  color: rgb(255, 255, 255);
-                  }
-
-QPushButton:pressed {
-                    background-color: rgb(255, 255, 255);
-                    color: rgb(0, 0, 255);
-                    }
-</string>
-       </property>
-       <property name="text">
-        <string>SEARCH</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="submitted_projects_pushButton">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>220</y>
-         <width>181</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">
-QPushButton:hover {
-
-                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));
-                  color: rgb(255, 255, 255);
-                  }
-
-QPushButton:pressed {
-                    background-color: rgb(255, 255, 255);
-                    color: rgb(0, 0, 255);
-                    }
-</string>
-       </property>
-       <property name="text">
-        <string>SUBMITTED PROJECTS</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="back_to_preferences_pushButton">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>270</y>
-         <width>181</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">
-QPushButton:hover {
-
-                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));
-                  color: rgb(255, 255, 255);
-                  }
-
-QPushButton:pressed {
-                    background-color: rgb(255, 255, 255);
-                    color: rgb(0, 0, 255);
-                    }
-</string>
-       </property>
-       <property name="text">
-        <string>BACK TO PREFERENCES</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="arrived_projects_pushButton">
-       <property name="geometry">
-        <rect>
-         <x>410</x>
-         <y>220</y>
-         <width>181</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">
-QPushButton:hover {
-
-                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));
-                  color: rgb(255, 255, 255);
-                  }
-
-QPushButton:pressed {
-                    background-color: rgb(255, 255, 255);
-                    color: rgb(0, 0, 255);
-                    }
-</string>
-       </property>
-       <property name="text">
-        <string>ARRIVED PROJECTS</string>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="exit_pushButton">
-       <property name="geometry">
-        <rect>
-         <x>410</x>
-         <y>270</y>
-         <width>181</width>
-         <height>31</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">
-QPushButton:hover {
-
-                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));
-                  color: rgb(255, 255, 255);
-                  }
-
-QPushButton:pressed {
-                    background-color: rgb(255, 255, 255);
-                    color: rgb(0, 0, 255);
-                    }
-</string>
-       </property>
-       <property name="text">
-        <string>EXIT</string>
-       </property>
-      </widget>
       <widget class="QTableWidget" name="interviews_page_tableWidget">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>340</y>
-         <width>581</width>
-         <height>271</height>
+         <x>20</x>
+         <y>310</y>
+         <width>591</width>
+         <height>291</height>
         </rect>
        </property>
        <property name="sizePolicy">
@@ -335,16 +129,290 @@ QPushButton:pressed {
        <property name="geometry">
         <rect>
          <x>20</x>
-         <y>0</y>
+         <y>20</y>
          <width>551</width>
-         <height>141</height>
+         <height>111</height>
         </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
        </property>
        <property name="text">
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>werhere_image.png</pixmap>
+        <pixmap>../images/werhere_image.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+      </widget>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>160</y>
+         <width>591</width>
+         <height>151</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QPushButton" name="submitted_projects_pushButton">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>90</y>
+          <width>131</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>10</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+QPushButton:hover{
+   border-radius : 6px;
+	color: rgb(255, 255, 255);
+	background-color:  ;
+	background-color: rgb(218, 30, 60);
+    border: 1px solid rgb(255, 255, 255);
+
+}
+
+
+</string>
+        </property>
+        <property name="text">
+         <string>Submitted Projects</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="back_to_preferences_pushButton">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>90</y>
+          <width>140</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>10</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+QPushButton:hover{
+   border-radius : 6px;
+	color: rgb(255, 255, 255);
+	background-color:  ;
+	background-color: rgb(218, 30, 60);
+    border: 1px solid rgb(255, 255, 255);
+
+}
+
+
+</string>
+        </property>
+        <property name="text">
+         <string>Back to Preferences</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="exit_pushButton">
+        <property name="geometry">
+         <rect>
+          <x>450</x>
+          <y>90</y>
+          <width>121</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>10</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+QPushButton:hover{
+   border-radius : 6px;
+	color: rgb(255, 255, 255);
+	background-color:  ;
+	background-color: rgb(218, 30, 60);
+    border: 1px solid rgb(255, 255, 255);
+
+}
+
+
+</string>
+        </property>
+        <property name="text">
+         <string>Exit</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="arrived_projects_pushButton">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>90</y>
+          <width>131</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>10</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+QPushButton:hover{
+   border-radius : 6px;
+	color: rgb(255, 255, 255);
+	background-color:  ;
+	background-color: rgb(218, 30, 60);
+    border: 1px solid rgb(255, 255, 255);
+
+}
+
+</string>
+        </property>
+        <property name="text">
+         <string>Arrived Projects</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="search_pushButton">
+        <property name="geometry">
+         <rect>
+          <x>450</x>
+          <y>30</y>
+          <width>121</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial</family>
+          <pointsize>10</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">
+QPushButton:hover{
+   border-radius : 6px;
+	color: rgb(255, 255, 255);
+	background-color:  ;
+	background-color: rgb(218, 30, 60);
+    border: 1px solid rgb(255, 255, 255);
+
+}
+
+</string>
+        </property>
+        <property name="text">
+         <string>Search</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="search_lineEdit">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>421</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="contextMenuPolicy">
+         <enum>Qt::DefaultContextMenu</enum>
+        </property>
+        <property name="accessibleName">
+         <string/>
+        </property>
+        <property name="accessibleDescription">
+         <string/>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);
+border-radius : 8px;</string>
+        </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhNone</set>
+        </property>
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::Normal</enum>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="dragEnabled">
+         <bool>false</bool>
+        </property>
+        <property name="readOnly">
+         <bool>false</bool>
+        </property>
+        <property name="cursorMoveStyle">
+         <enum>Qt::LogicalMoveStyle</enum>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QLabel" name="label">
+       <property name="geometry">
+        <rect>
+         <x>130</x>
+         <y>150</y>
+         <width>371</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: qradialgradient(spread:reflect, cx:0.477, cy:0.568, radius:0.73, fx:0.46, fy:0.575, stop:0.602273 rgba(255, 0, 0, 255), stop:1 rgba(255, 255, 255, 255));</string>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Sunken</enum>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-family:'__Inter_46a1ea','__Inter_Fallback_46a1ea','system-ui','arial'; font-size:10pt; font-weight:600; color:#ffffff;&quot;&gt;CRM (İnterviews Page)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </widget>

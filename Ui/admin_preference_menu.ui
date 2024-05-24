@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>500</width>
-    <height>500</height>
+    <width>520</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>500</width>
-    <height>500</height>
+    <width>520</width>
+    <height>600</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>500</width>
-    <height>500</height>
+    <width>600</width>
+    <height>600</height>
    </size>
   </property>
   <property name="acceptDrops">
@@ -38,11 +38,23 @@
    <widget class="QFrame" name="admin_preference_menu_frame">
     <property name="geometry">
      <rect>
-      <x>-150</x>
-      <y>-100</y>
-      <width>721</width>
-      <height>661</height>
+      <x>-70</x>
+      <y>-20</y>
+      <width>600</width>
+      <height>600</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>600</width>
+      <height>600</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>600</width>
+      <height>600</height>
+     </size>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: qlineargradient(spread:pad, x1:0.489, y1:1, x2:0.494, y2:0, stop:0 rgba(71, 71, 71, 255), stop:1 rgba(255, 255, 255, 255));</string>
@@ -56,8 +68,8 @@
     <widget class="QLabel" name="werhere_image_label">
      <property name="geometry">
       <rect>
-       <x>160</x>
-       <y>110</y>
+       <x>80</x>
+       <y>90</y>
        <width>481</width>
        <height>101</height>
       </rect>
@@ -78,8 +90,8 @@
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>220</x>
-       <y>250</y>
+       <x>130</x>
+       <y>210</y>
        <width>371</width>
        <height>21</height>
       </rect>
@@ -97,9 +109,9 @@
     <widget class="QGroupBox" name="groupBox">
      <property name="geometry">
       <rect>
-       <x>210</x>
-       <y>260</y>
-       <width>391</width>
+       <x>100</x>
+       <y>220</y>
+       <width>431</width>
        <height>221</height>
       </rect>
      </property>
@@ -117,9 +129,9 @@ background-color: qradialgradient(spread:pad, cx:0.488409, cy:0.557, radius:0.73
      <widget class="QPushButton" name="interviews_pushButton">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>120</y>
-        <width>111</width>
+        <x>30</x>
+        <y>100</y>
+        <width>121</width>
         <height>31</height>
        </rect>
       </property>
@@ -129,6 +141,9 @@ background-color: qradialgradient(spread:pad, cx:0.488409, cy:0.557, radius:0.73
         <pointsize>10</pointsize>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">
@@ -154,7 +169,7 @@ QPushButton:pressed {
       <property name="geometry">
        <rect>
         <x>240</x>
-        <y>40</y>
+        <y>30</y>
         <width>121</width>
         <height>31</height>
        </rect>
@@ -165,6 +180,9 @@ QPushButton:pressed {
         <pointsize>10</pointsize>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">
@@ -186,11 +204,11 @@ QPushButton:pressed {
        <string>Mentor Interview</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="back_menu_pushButton">
+     <widget class="QPushButton" name="Back_menu_pushButton">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>180</y>
+        <x>30</x>
+        <y>170</y>
         <width>121</width>
         <height>31</height>
        </rect>
@@ -201,6 +219,9 @@ QPushButton:pressed {
         <pointsize>10</pointsize>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">
@@ -225,8 +246,8 @@ QPushButton:pressed {
      <widget class="QPushButton" name="Exit_pushButton">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>180</y>
+        <x>240</x>
+        <y>170</y>
         <width>121</width>
         <height>31</height>
        </rect>
@@ -237,6 +258,9 @@ QPushButton:pressed {
         <pointsize>10</pointsize>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">
@@ -261,8 +285,8 @@ QPushButton:pressed {
      <widget class="QPushButton" name="application_page_pushButton">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>40</y>
+        <x>30</x>
+        <y>30</y>
         <width>121</width>
         <height>31</height>
        </rect>
@@ -273,6 +297,9 @@ QPushButton:pressed {
         <pointsize>10</pointsize>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">
@@ -294,6 +321,45 @@ QPushButton:pressed {
        <string>Applications</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="admin_menu_pushButton">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>100</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">
+QPushButton:hover{
+   border-radius : 6px;
+	color: rgb(255, 255, 255);
+	background-color:  ;
+	background-color: rgb(218, 30, 60);
+    border: 1px solid rgb(255, 255, 255);
+
+}
+
+QPushButton:pressed {
+                    background-color: rgb(255, 255, 255);
+                    color: rgb(0, 0, 255);
+                    }</string>
+      </property>
+      <property name="text">
+       <string>Admin Menu</string>
+      </property>
+     </widget>
     </widget>
     <zorder>werhere_image_label</zorder>
     <zorder>groupBox</zorder>
@@ -305,7 +371,7 @@ QPushButton:pressed {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>500</width>
+     <width>520</width>
      <height>22</height>
     </rect>
    </property>

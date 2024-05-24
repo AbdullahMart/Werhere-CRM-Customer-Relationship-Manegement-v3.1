@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>mentor_interviews_page_MainWindow</class>
+ <widget class="QMainWindow" name="mentor_interviews_page_MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1100</width>
+    <height>750</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1100</width>
+    <height>750</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1100</width>
+    <height>750</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Mentor Menu </string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>1050</width>
+      <height>700</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>1050</width>
+      <height>700</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>1050</width>
+      <height>700</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QLabel" name="Werhere_imaj_label">
+     <property name="geometry">
+      <rect>
+       <x>13</x>
+       <y>0</y>
+       <width>441</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>werhere_image.png</pixmap>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>600</x>
+       <y>0</y>
+       <width>441</width>
+       <height>111</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap>werhere_image.png</pixmap>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="All_Interviews_pushButton">
+     <property name="geometry">
+      <rect>
+       <x>13</x>
+       <y>140</y>
+       <width>281</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton:hover {
+                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));
+                  color: rgb(255, 255, 255);
+                  }</string>
+     </property>
+     <property name="text">
+      <string>All Interviews</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Search_pushButton">
+     <property name="geometry">
+      <rect>
+       <x>970</x>
+       <y>150</y>
+       <width>71</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton:hover {
+                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));
+                  color: rgb(255, 255, 255);
+                  }</string>
+     </property>
+     <property name="text">
+      <string>Search</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Preferences_pushButton">
+     <property name="geometry">
+      <rect>
+       <x>13</x>
+       <y>200</y>
+       <width>201</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton:hover {
+                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));
+                  color: rgb(255, 255, 255);
+                  }</string>
+     </property>
+     <property name="text">
+      <string>Preferences</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Exit_pushButton">
+     <property name="geometry">
+      <rect>
+       <x>13</x>
+       <y>250</y>
+       <width>71</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton:hover {
+                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));
+                  color: rgb(255, 255, 255);
+                  }</string>
+     </property>
+     <property name="text">
+      <string>Exit</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_2">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>150</y>
+       <width>491</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QTextEdit:hover {
+                  background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(0,157, 255, 255), stop:1 rgba(30, 206, 255, 255));
+                  color: rgb(255, 255, 255);
+                  }
+QTextEdit:pressed {
+                    background-color: rgb(255, 255, 255);
+                    color: rgb(0, 0, 255);
+                    }</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>230</y>
+       <width>591</width>
+       <height>32</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Vit projesinin tamamina katilmasi uygundur</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Vit projesinin ilk IT egitimi alanina yonlendirilmesi uygun olur</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Vit projesi ingilizce egitimi alanina yonlendirilmesi uygundur</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Vit projesi kapsaminda direk ise yonlendirilmesi uygundur</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Direkt bireysel kocluk ile ise yonlendirilmesi uygun olur</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Bir sonraki vit projesine katilmasi daha uygundur</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Baska bir sektore yonlendirilmesi uygundur</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Diger</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="geometry">
+      <rect>
+       <x>13</x>
+       <y>310</y>
+       <width>1021</width>
+       <height>341</height>
+      </rect>
+     </property>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>160</number>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>Interview Date</string>
+      </property>
+      <property name="font">
+       <font>
+        <stylestrategy>PreferDefault</stylestrategy>
+        <hintingpreference>PreferFullHinting</hintingpreference>
+       </font>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Name-Surname</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Mentor</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>IT Knowledge</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Density</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Commends</string>
+      </property>
+     </column>
+    </widget>
+    <widget class="QLabel" name="Mentormenu_label">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>40</y>
+       <width>231</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>                  Mentor Menu</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1100</width>
+     <height>29</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
