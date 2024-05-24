@@ -352,25 +352,33 @@ class Ui_interviews_page_MainWindow(object):
     
 
     def search_clicked(self):
+        # Arama sonuçlarını saklamak için bir liste oluştur
         searched_people = [self.interviews[0]]
-        for person in self.interviews[1:]:
-            # If the text in the textbox appears within one of the names in the list AND is not empty at the same time!
-            if (self.search_lineEdit.text().lower() in str(person[1]).lower()
-                    and self.search_lineEdit.text() != ''):
-                searched_people.append(person)
-
-        # Make empty the search area
+        
+        # Arama metnini al ve küçük harf yap
+        search_text = self.search_lineEdit.text().lower()
+        
+        # Eğer arama metni boş değilse, arama yap
+        if search_text:
+            for person in self.interviews[1:]:
+                # Eğer arama metni kişinin adında varsa
+                if search_text in str(person[0]).lower():
+                    searched_people.append(person)
+        
+        # Arama alanını boşalt
         self.search_lineEdit.setText('')
-
-        if len(searched_people) > 1:  # If the searched_people variable is not empty!
-            pass
+        
+                
+        # Eğer sonuç varsa, tabloya yazdır
+        if len(searched_people) > 1:
+            write2table(self.interviews_page_tableWidget, searched_people)
         else:
+            # Eğer sonuç yoksa, 'No User Found!' mesajı ekle
             no_user = ['No User Found!']
-            [no_user.append('-') for i in range(len(self.interviews[0]) - 1)]
+            no_user.extend(['-'] * (len(self.interviews[0]) - 1))
             searched_people.append(no_user)
-            # searched_people.append(['No user found!', '-', '-'])
-            # Above - one line - code works as same as active code. But active code is automated for cell amount
-        return write2table(self.interviews_page_tableWidget, searched_people)
+            write2table(self.interviews_page_tableWidget, searched_people)
+
 
 
     
