@@ -358,7 +358,7 @@ class Ui_interviews_page_MainWindow(object):
         # Arama metnini al ve küçük harf yap
         search_text = self.search_lineEdit.text().lower()
         
-        # Eğer arama metni boş değilse, arama yap
+        # Eğer arama metni boş değilse, arama yapacak
         if search_text:
             for person in self.interviews[1:]:
                 # Eğer arama metni kişinin adında varsa
